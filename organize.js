@@ -34,7 +34,10 @@ const organizeFiles = async (dirPath) => {
         }
 
         const destDir = path.join(dirPath, folderName);
-        await fs.mkdir(destDir);
+
+        if (destDir !== folderName) {
+          await fs.mkdir(destDir);
+        }
 
         const destPath = path.join(destDir, file);
         await fs.rename(filePath, destPath);
